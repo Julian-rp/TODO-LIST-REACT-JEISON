@@ -1,0 +1,27 @@
+-- Database: todo_list
+-- Create database if not exists
+CREATE DATABASE IF NOT EXISTS todo_list;
+USE todo_list;
+
+-- Table: users
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Table: tasks
+CREATE TABLE IF NOT EXISTS tasks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  text VARCHAR(500) NOT NULL,
+  author VARCHAR(50) NOT NULL,
+  completed BOOLEAN DEFAULT FALSE,
+  editor VARCHAR(50) NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_author (author),
+  INDEX idx_completed (completed)
+);
+

@@ -1,0 +1,16 @@
+[build]
+  # Comando para construir el proyecto
+  command = "npm run build"
+  # Directorio donde se generan los archivos estáticos
+  publish = "dist"
+
+# Configuración para SPA (Single Page Application)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Variables de entorno (se configuran en el dashboard de Netlify)
+# [build.environment]
+#   VITE_API_URL = "https://tu-backend.onrender.com/api"
+
