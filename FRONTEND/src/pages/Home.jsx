@@ -24,11 +24,12 @@ export default function Home() {
   // Crear nueva tarea
   const handleAdd = async (text) => {
     try {
-      const newTask = { author: user.name, text, completed: false, editor: null };
+      const newTask = { text };
       const created = await createTask(newTask);
       setTasks((prev) => [created, ...prev]);
       toast.success("Tarea creada");
-    } catch {
+    } catch (error) {
+      console.error("Error creando tarea:", error);
       toast.error("Error creando tarea");
     }
   };
@@ -66,9 +67,7 @@ export default function Home() {
       if (!current) return;
 
       const updatedTask = {
-        ...current,
         text: newText,
-        editor: user.name,
       };
 
       const updated = await updateTask(id, updatedTask);
