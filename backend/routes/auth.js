@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
 
     // Create user
     const [result] = await db.execute(
-      'INSERT INTO users (username, password) VALUES (?, ?)',
+      'INSERT INTO users (username, password, created_at, updated_at) VALUES (?, ?, NOW(), NOW())',
       [username, hashedPassword]
     );
 

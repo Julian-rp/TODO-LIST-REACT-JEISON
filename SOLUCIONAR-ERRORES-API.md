@@ -21,14 +21,27 @@ El backend necesita las credenciales de Railway en Render.
 
 ## ✅ Solución Paso a Paso
 
-### Paso 1: Verificar que las Tablas Existan en Railway
+### Paso 1: Corregir las Tablas en Railway
+
+**⚠️ ERROR ACTUAL:** `Field 'updated_at' doesn't have a default value`
 
 1. Ve a [Railway Dashboard](https://railway.app/)
 2. Haz clic en tu servicio MySQL
 3. Ve a la pestaña **"Data"** o **"Query"**
-4. Verifica que existan las tablas `users` y `tasks`
+4. Ejecuta este SQL para corregir las tablas:
 
-Si no existen, créalas ejecutando este SQL en Railway:
+```sql
+-- Si las tablas ya existen, corrige los defaults:
+ALTER TABLE users 
+MODIFY COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+MODIFY COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+ALTER TABLE tasks 
+MODIFY COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+MODIFY COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+```
+
+**O si las tablas no existen, créalas con:**
 
 ```sql
 CREATE TABLE IF NOT EXISTS users (
@@ -51,6 +64,8 @@ CREATE TABLE IF NOT EXISTS tasks (
   INDEX idx_completed (completed)
 );
 ```
+
+> 💡 **Nota:** También puedes usar el archivo `db/fix-schema-railway.sql` que contiene estos comandos.
 
 ### Paso 2: Verificar Variables de Entorno en Render
 
