@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTasks, createTask, updateTask, deleteTask } from "../api";
+import { getTasks, createTask, updateTask, deleteTask } from "../api/Index.jsx";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import SearchBar from "../components/SearchBar";
