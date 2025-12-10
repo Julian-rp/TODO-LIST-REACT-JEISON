@@ -49,6 +49,16 @@ Guía completa paso a paso para conectar tu frontend en Netlify con tu backend e
    - No debe tener barra al final: `/api` ✅ (correcto), `/api/` ❌ (incorrecto)
    - Debe usar `https://` (no `http://`)
 
+### 2.3. ⚠️ REDESPLEGAR DESPUÉS DE AGREGAR LA VARIABLE
+
+**CRÍTICO:** Las variables `VITE_*` se inyectan en tiempo de BUILD. Después de agregar la variable:
+
+1. Ve a **"Deploys"** en Netlify
+2. Haz clic en **"Trigger deploy"** → **"Deploy site"**
+3. O simplemente haz un push a tu repositorio (si tienes auto-deploy activado)
+
+**Sin redesplegar, la variable NO estará disponible en el código desplegado.**
+
 3. Haz clic en **"Save"** o **"Add variable"**
 
 ### 2.3. Redesplegar
