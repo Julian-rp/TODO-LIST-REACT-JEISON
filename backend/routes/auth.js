@@ -5,6 +5,37 @@ import { db } from '../config/database.js';
 
 const router = express.Router();
 
+// Info route (GET) - for testing
+router.get('/register', (req, res) => {
+  res.json({
+    message: 'Register endpoint',
+    method: 'POST',
+    body: {
+      username: 'string (required)',
+      password: 'string (required)'
+    },
+    example: {
+      username: 'testuser',
+      password: 'password123'
+    }
+  });
+});
+
+router.get('/login', (req, res) => {
+  res.json({
+    message: 'Login endpoint',
+    method: 'POST',
+    body: {
+      username: 'string (required)',
+      password: 'string (required)'
+    },
+    example: {
+      username: 'testuser',
+      password: 'password123'
+    }
+  });
+});
+
 // Register
 router.post('/register', async (req, res) => {
   try {
