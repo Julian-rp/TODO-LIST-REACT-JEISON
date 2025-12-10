@@ -49,7 +49,7 @@ router.post('/', authenticateToken, async (req, res) => {
     }
 
     const [result] = await db.execute(
-      'INSERT INTO tasks (text, author, completed, editor) VALUES (?, ?, ?, ?)',
+      'INSERT INTO tasks (text, author, completed, editor, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())',
       [text, username, false, null]
     );
 
