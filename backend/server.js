@@ -30,6 +30,27 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
+// Root route - API info
+app.get('/', (req, res) => {
+  res.json({
+    message: 'TODO List API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      auth: {
+        register: 'POST /api/auth/register',
+        login: 'POST /api/auth/login'
+      },
+      tasks: {
+        getAll: 'GET /api/tasks',
+        create: 'POST /api/tasks',
+        update: 'PUT /api/tasks/:id',
+        delete: 'DELETE /api/tasks/:id'
+      }
+    }
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
