@@ -188,9 +188,9 @@ La base de datos se encuentra alojada en **Railway** y contiene una tabla `todos
 
 ##  Despliegue en la Nube
 
-###  Frontend – Vercel
+###  Frontend – Netlify
 
-* Repositorio conectado a Vercel
+* Repositorio conectado a Netlify
 * Build command: `npm run build`
 * Output directory: `dist`
 * Variable de entorno configurada: `VITE_API_URL`
